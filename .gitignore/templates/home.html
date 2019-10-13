@@ -1,0 +1,164 @@
+
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+ <div class="login">
+	<h1>Disease prediction</h1>
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    itching: <input type="text" name="sym1" value="0"><br>
+    skin_rash: <input type="text" name="sym2" value="0"><br>
+    nodal_skin_eruptions: <input type="text" name="sym3" value="0"><br>
+    continuous_sneezing: <input type="text" name="sym4" value="0"><br>
+    shivering: <input type="text" name="sym5" value="0"><br>
+    chills: <input type="text" name="sym6" value="0"><br>
+    joint_pain: <input type="text" name="sym7" value="0"><br>
+    stomach_pain: <input type="text" name="sym8" value="0"><br>
+    acidity: <input type="text" name="sym9" value="0"><br>
+    ulcers_on_tongue: <input type="text" name="sym10" value="0"><br>
+    muscle_wasting: <input type="text" name="sym11" value="0"><br>
+    vomiting:<input type="text" name="sym12" value="0"><br>
+    burning_micturition: <input type="text" name="sym13" value="0"><br>
+    spotting_ urination: <input type="text" name="sym14" value="0"><br>
+    fatigue: <input type="text" name="sym15" value="0"><br>
+    weight_gain: <input type="text" name="sym16" value="0"><br>
+    anxiety: <input type="text" name="sym17" value="0"><br>
+    cold_hands_and_feets: <input type="text" name="sym18" value="0"><br>
+    mood_swings: <input type="text" name="sym19" value="0"><br>
+    weight_loss: <input type="text" name="sym20" value="0"><br>
+    restlessness: <input type="text" name="sym21" value="0"><br>
+    lethargy: <input type="text" name="sym22" value="0"><br>
+    patches_in_throat: <input type="text" name="sym23" value="0"><br>
+    irregular_sugar_level: <input type="text" name="sym224" value="0"><br>
+    cough: <input type="text" name="sym25" value="0"><br>
+    high_fever: <input type="text" name="sym26" value="0"><br>
+    sunken_eyes: <input type="text" name="sym27" value="0"><br>
+    breathlessness: <input type="text" name="sym28" value="0"><br>
+    sweating: <input type="text" name="sym29" value="0"><br>
+    dehydration: <input type="text" name="sym30" value="0"><br>
+    indigestion: <input type="text" name="sym31" value="0"><br>
+    headache: <input type="text" name="sym32" value="0"><br>
+    yellowish_skin: <input type="text" name="sym33" value="0"><br>
+     dark_urine: <input type="text" name="sym34" value="0"><br>
+     nausea: <input type="text" name="sym35" value="0"><br>
+     loss_of_appetite: <input type="text" name="sym36" value="0"><br>
+    pain_behind_the_eyes: <input type="text" name="sym37" value="0"><br>
+    back_pain: <input type="text" name="sym38" value="0"><br>
+    constipation: <input type="text" name="sym39" value="0"><br>
+    abdominal_pain: <input type="text" name="sym40" value="0"><br>
+    diarrhoea: <input type="text" name="sym41" value="0"><br>
+    mild_fever: <input type="text" name="sym42" value="0"><br>
+    yellow_urine: <input type="text" name="sym43" value="0"><br>
+    yellowing_of_eyes: <input type="text" name="sym44" value="0"><br>
+    acute_liver_failure: <input type="text" name="sym45" value="0"><br>
+    fluid_overload: <input type="text" name="sym46" value="0"><br>
+    swelling_of_stomach: <input type="text" name="sym47" value="0"><br>
+    swelled_lymph_nodes: <input type="text" name="sym48" value="0"><br>
+    malaise: <input type="text" name="sym49" value="0"><br>
+    blurred_and_distorted_vision: <input type="text" name="sym50" value="0"><br>
+    phlegm: <input type="text" name="sym51" value="0"><br>
+    throat_irritation: <input type="text" name="sym52" value="0"><br>
+    redness_of_eyes: <input type="text" name="sym53" value="0"><br>
+    sinus_pressure: <input type="text" name="sym54" value="0"><br>
+    runny_nose: <input type="text" name="sym55" value="0"><br>
+    congestion: <input type="text" name="sym56" value="0"><br>
+    chest_pain: <input type="text" name="sym57" value="0"><br>
+    weakness_in_limbs: <input type="text" name="sym58" value="0"><br>
+    fast_heart_rate: <input type="text" name="sym59" value="0"><br>
+    pain_during_bowel_movements: <input type="text" name="sym60" value="0"><br>
+    pain_in_anal_region: <input type="text" name="sym61" value="0"><br>
+    bloody_stool: <input type="text" name="sym62" value="0"><br>
+    irritation_in_anus: <input type="text" name="sym63" value="0"><br>
+    neck_pain: <input type="text" name="sym64" value="0"><br>
+    dizziness: <input type="text" name="sym65" value="0"><br>
+    cramps: <input type="text" name="sym66" value="0"><br>
+    bruising: <input type="text" name="sym67" value="0"><br>
+    obesity: <input type="text" name="sym68" value="0"><br>
+    swollen_legs: <input type="text" name="sym69" value="0"><br>
+    swollen_blood_vessels: <input type="text" name="sym70" value="0"><br>
+    puffy_face_and_eyes: <input type="text" name="sym71" value="0"><br>
+    senlarged_thyroid: <input type="text" name="sym72" value="0"><br>
+    brittle_nails: <input type="text" name="sym73" value="0"><br>
+    swollen_extremeties: <input type="text" name="sym74" value="0"><br>
+    excessive_hunger: <input type="text" name="sym75" value="0"><br>
+    extra_marital_contacts: <input type="text" name="sym76" value="0"><br>
+    drying_and_tingling_lips: <input type="text" name="sym77" value="0"><br>
+    slurred_speech: <input type="text" name="sym78" value="0"><br>
+    knee_pain: <input type="text" name="sym79" value="0"><br>
+    hip_joint_pain: <input type="text" name="sym80" value="0"><br>
+    muscle_weakness: <input type="text" name="sym81" value="0"><br>
+    stiff_neck: <input type="text" name="sym82" value="0"><br>
+    swelling_joints: <input type="text" name="sym83" value="0"><br>
+    movement_stiffness: <input type="text" name="sym84" value="0"><br>
+    spinning_movements: <input type="text" name="sym85" value="0"><br>
+    loss_of_balance: <input type="text" name="sym86" value="0"><br>
+    unsteadiness: <input type="text" name="sym87" value="0"><br>
+    weakness_of_one_body_side: <input type="text" name="sym88" value="0"><br>
+    loss_of_smell: <input type="text" name="sym89" value="0"><br>
+    bladder_discomfort: <input type="text" name="sym90" value="0"><br>
+    foul_smell_of urine: <input type="text" name="sym91" value="0"><br>
+    continuous_feel_of_urine: <input type="text" name="sym92" value="0"><br>
+    passage_of_gases: <input type="text" name="sym93" value="0"><br>
+    internal_itching: <input type="text" name="sym94" value="0"><br>
+    toxic_look_(typhos): <input type="text" name="sym95" value="0"><br>
+    depression: <input type="text" name="sym96" value="0"><br>
+    irritability: <input type="text" name="sym97" value="0"><br>
+    muscle_pain: <input type="text" name="sym98" value="0"><br>
+    altered_sensorium: <input type="text" name="sym99" value="0"><br>
+    red_spots_over_body: <input type="text" name="sym100" value="0"><br>
+    belly_pain: <input type="text" name="sym101" value="0"><br>
+    abnormal_menstruation: <input type="text" name="sym102" value="0"><br>
+    dischromic _patches: <input type="text" name="sym103" value="0"><br>
+    watering_from_eyes: <input type="text" name="sym104" value="0"><br>
+    increased_appetite: <input type="text" name="sym105" value="0"><br>
+    polyuria: <input type="text" name="sym106" value="0"><br>
+    family_history: <input type="text" name="sym107" value="0"><br>
+    mucoid_sputum: <input type="text" name="sym108" value="0"><br>
+    rusty_sputum: <input type="text" name="sym109" value="0"><br>
+    lack_of_concentration: <input type="text" name="sym110" value="0"><br>
+    visual_disturbances: <input type="text" name="sym111" value="0"><br>
+    receiving_blood_transfusion: <input type="text" name="sym112" value="0"><br>
+    receiving_unsterile_injections: <input type="text" name="sym113" value="0"><br>
+    coma: <input type="text" name="sym114" value="0"><br>
+    sstomach_bleeding: <input type="text" name="sym115" value="0"><br>
+    distention_of_abdomen: <input type="text" name="sym116" value="0"><br>
+    history_of_alcohol_consumption: <input type="text" name="sym117" value="0"><br>
+    fluid_overload: <input type="text" name="sym118" value="0"><br>
+    blood_in_sputum: <input type="text" name="sym119" value="0"><br>
+    prominent_veins_on_calf: <input type="text" name="sym120" value="0"><br>
+    palpitations: <input type="text" name="sym121" value="0"><br>
+    painful_walking: <input type="text" name="sym122" value="0"><br>
+    pus_filled_pimples: <input type="text" name="sym123" value="0"><br>
+    blackheads: <input type="text" name="sym124" value="0"><br>
+    scurring: <input type="text" name="sym125" value="0"><br>
+    skin_peeling: <input type="text" name="sym126" value="0"><br>
+    silver_like_dusting: <input type="text" name="sym127" value="0"><br>
+    small_dents_in_nails: <input type="text" name="sym128" value="0"><br>
+    inflammatory_nails: <input type="text" name="sym129" value="0"><br>
+    blister: <input type="text" name="sym130" value="0"><br>
+    red_sore_around_nose: <input type="text" name="sym131" value="0"><br>
+    yellow_crust_ooze: <input type="text" name="sym132" value="0"><br>
+
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   <h1>{{ prediction_text }}</h1>
+
+ </div>
+
+
+</body>
+</html>
